@@ -7,7 +7,15 @@ class Movie(models.Model):
     description = models.TextField()
     release_date = models.DateField()
     genre = models.CharField(max_length=100)   
-    poster = models.URLField(blank=True)
+    poster = models.ImageField(
+        upload_to='posters/',
+        blank=True,
+        verbose_name='Poster image',
+    )
+    poster_url = models.URLField(
+        blank=True,
+        verbose_name='Poster URL (optional)',
+    )
 
     def __str__(self):
         return self.title
